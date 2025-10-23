@@ -1,5 +1,6 @@
 package br.com.ctrlaltally.screenmatch;
 
+import model.DadosEpisodio;
 import model.DadosSerie;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,11 +18,18 @@ public class ScreenmatchApplication implements CommandLineRunner    {
 
     @Override
     public void run(String... args) throws Exception {
+
         var consumoAPI = new ConsumoAPI();
+
         var json = consumoAPI.obterDados("https://omdbapi.com/?t=Arcane&apikey=966897e1");
         System.out.println(json);
         ConverteDados conversor = new ConverteDados();
-        DadosSerie dados = conversor.obterDados(json, DadosSerie.class);
-        System.out.println(dados);
+
+        DadosSerie dadosSerie = conversor.obterDados(json, DadosSerie.class);
+        System.out.println(dadosSerie);
+
+        json = consumoAPI.obterDados("https://omdbapi.com/?t=Arcane&Season=1&episode=1&apikey=966897e1");
+        DadosEpisodio dadosEpisodio = conversor.obterDados(json, DadosEpisodio.class);
+        System.out.println(dadosEpisodio);
     }
 }
