@@ -8,6 +8,5 @@ public record DadosSerie(@JsonProperty("Title") String titulo,
                          @JsonProperty("Year") String anoLancamento,
                          @JsonProperty("Genre") String genero,
                          @JsonProperty("totalSeasons") Integer totalTemporadas,
-                         @JsonProperty("imdbRating") String avaliacao)
-    {
+                         @JsonProperty("imdbRating") String avaliacao) {
 }
